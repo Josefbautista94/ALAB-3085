@@ -102,10 +102,10 @@ let personArr = [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" }, {
 //learning how to use map real quck
 
 //using map to find the ages and converting them to numbers
-let ages = personArr.map(person => Number(person.age))
-console.log(ages)
-let names = personArr.map(person => (person.name))
-console.log(names)
+// let ages = personArr.map(person => Number(person.age))
+// console.log(ages)
+// let names = personArr.map(person => (person.name))
+// console.log(names)
 
 
 // Sort the array by age.
@@ -116,3 +116,12 @@ function sortByAge(byAge) {
 }
 
 console.log(sortByAge(personArr))
+
+// Filter the array to remove entries with an age greater than 50.
+
+function removingOlderPeople(ageistWowOk) {
+
+    return ageistWowOk.filter(person => Number(person.age) < 50) // converting the number string to an int to filter out any numbers 50 and above and returning those numbers under 50
+
+}
+console.log(removingOlderPeople(personArr))
