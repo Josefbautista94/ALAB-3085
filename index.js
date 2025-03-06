@@ -14,8 +14,8 @@
 // Take a number, n, and print every number 
 // between 1 and n without using loops. Use recursion.
 
-let arrOfNums = [32, 43, 67, 35, 23, 12, 43, 72, 6, 256, 512]
-let arrayOfStrings = ["random","array","of","strings","haha"]
+let arrOfNums = [32, 43, 67, 35, 23, 12, 43, 72, 6, 256, 512];
+let arrayOfStrings = ["random", "array", "of", "strings", "haha", "French Bulldogs", "pizza", "Hennesy Wings"];
 
 // Take an array of numbers and return the sum.
 function sumOfNumbers(numArr) {
@@ -42,3 +42,14 @@ function averageOfNumbers(numArr) {
 console.log(`This is the average of the numbers in the array: ${averageOfNumbers(arrOfNums)}`)
 
 // Take an array of strings and return the longest string.
+function returnLongestString(stringArr) {
+    let longestString = "" // storing current longest string
+    for (let i = 0; i < stringArr.length; i++) { //travesring throught the array
+        if (stringArr[i].length > longestString.length) { // checking if the string in the current index is longer than the string we stored, or if none stored it automatically becomes the longest string
+            longestString = stringArr[i]; //updating the current longest string if the if statement is truuu
+        }
+    }
+    return longestString; // doesnt check if there are two longest string with the same length so its going to return the first longest string
+}
+
+console.log(`This is the longest string in the array: ${returnLongestString(arrayOfStrings)}`)
