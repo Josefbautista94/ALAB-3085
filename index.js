@@ -14,12 +14,13 @@
 // Take a number, n, and print every number 
 // between 1 and n without using loops. Use recursion.
 
+let arrOfNums = [32, 43, 67, 35, 23, 12, 43, 72, 6, 256, 512]
+let arrayOfStrings = ["random","array","of","strings","haha"]
 
 // Take an array of numbers and return the sum.
-let arrOfNums = [32, 43, 67, 35, 23, 12]
 function sumOfNumbers(numArr) {
 
-   let sum = 0;
+    let sum = 0;
     for (let nums of numArr) {
         sum += nums
     }
@@ -27,4 +28,17 @@ function sumOfNumbers(numArr) {
     return sum;
 }
 
-console.log(sumOfNumbers(arrOfNums))
+console.log(`This is the sum of the numbers in the array: ${sumOfNumbers(arrOfNums)}`)
+
+// Take an array of numbers and return the average.
+function averageOfNumbers(numArr) {
+    let sum = 0;
+    for (let nums of numArr) {
+        sum += nums
+    }
+    return sum / numArr.length;
+}
+
+console.log(`This is the average of the numbers in the array: ${averageOfNumbers(arrOfNums)}`)
+
+// Take an array of strings and return the longest string.
