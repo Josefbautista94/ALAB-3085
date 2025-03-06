@@ -125,3 +125,32 @@ function removingOlderPeople(ageistWowOk) {
 
 }
 console.log(removingOlderPeople(personArr))
+
+//Map the array to change the “occupation” key to “job” and increment every age by 1.
+
+function newKeyAndIncrement(change) {
+
+    return change.map(person => {
+        let { occupation, ...rest } = person // removes occupation 
+        return {
+            ...rest, // spreads all else 
+            job: person.occupation, // changing the name of occupation to job
+            age: Number(person.age) + 1 // incrementing the age by 1
+        }
+    })
+}
+
+//Rest in Objects
+
+// { keyToRemove, ...rest } = obj Extracts keyToRemove, keeps everything else in rest
+
+console.log(newKeyAndIncrement(personArr))
+
+//Use the reduce method to calculate the sum of the ages. Then use the result to calculate the average age.
+
+function averageAge(personAverageAge){
+
+    return  personAverageAge.reduce((sum, person) => sum + Number(person.age),0) / personAverageAge.length; // starting at 0 and adding the value of Number(person.age) till we reach the last age then divinding it by the length of personAverageAge.
+}
+
+console.log(averageAge(personArr))
