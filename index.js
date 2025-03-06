@@ -46,7 +46,7 @@ console.log(`This is the average of the numbers in the array: ${averageOfNumbers
 function returnLongestString(stringArr) {
     let longestString = "" // storing current longest string
     for (let i = 0; i < stringArr.length; i++) { //travesring throught the array
-        if (stringArr[i].length > longestString.length) { // checking if the string in the current index is longer than the string we stored, or if none stored it automatically becomes the longest string
+        if (stringArr[i].length > longestString.length) { // checking if the string in the current index is longer than the string we stored, or if none it's stored automatically and becomes the longest string.
             longestString = stringArr[i]; //updating the current longest string if the if statement is truuu
         }
     }
@@ -90,9 +90,10 @@ function recursion(num,n) { // num is the number where start, and current number
     if (num > n) { // checking if the current number goes over the end goal if it does the if statement stops by returning
        return;
     }
-    console.log(num) // we're priting where we currently are at
-  recursion(num + 1, n); // recursion takes place here, we're add 1 to num till the if statement becomes true, num becomes 31 it it terminates the function.
+    console.log(num) // we're printing where we currently are at
+  recursion(num + 1, n); // recursion takes place here, we're adding 1 to num till the if statement becomes true, if num becomes 31 terminates the function.
 }
 
 console.log(recursion(1,recursionNumber))
 
+// Part 2: Thinking Methodically
