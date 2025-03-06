@@ -16,7 +16,7 @@
 
 let arrOfNums = [32, 43, 67, 35, 23, 12, 43, 72, 6, 256, 512];
 let arrayOfStrings = ["random", "array", "of", "strings", "haha", "French Bulldogs", "pizza", "Hennesy Wings"];
-
+let arrOfStrings2 = ['say', 'hello', 'in', 'the', 'morning']
 // Take an array of numbers and return the sum.
 function sumOfNumbers(numArr) {
 
@@ -53,3 +53,20 @@ function returnLongestString(stringArr) {
 }
 
 console.log(`This is the longest string in the array: ${returnLongestString(arrayOfStrings)}`)
+
+// Take an array of strings, and a number and return an array of the strings that are longer than the given number. 
+// For example, stringsLongerThan(['say', 'hello', 'in', 'the', 'morning'], 3); would return ["hello", "morning"].
+
+function stringsLongerThan(stringArr,num){
+    let newArr = []
+
+    for(let i = 0; i < stringArr.length; i++){
+        if(stringArr[i].length > num){
+            newArr.push(stringArr[i])
+        }
+    }
+    return newArr;
+
+}
+
+console.log(stringsLongerThan(['say', 'hello', 'in', 'the', 'morning'], 3));
