@@ -148,9 +148,72 @@ console.log(newKeyAndIncrement(personArr))
 
 //Use the reduce method to calculate the sum of the ages. Then use the result to calculate the average age.
 
-function averageAge(personAverageAge){
+function averageAge(personAverageAge) {
 
-    return  personAverageAge.reduce((sum, person) => sum + Number(person.age),0) / personAverageAge.length; // starting at 0 and adding the value of Number(person.age) till we reach the last age then divinding it by the length of personAverageAge.
+    return personAverageAge.reduce((sum, person) => sum + Number(person.age), 0) / personAverageAge.length; // starting at 0 and adding the value of Number(person.age) till we reach the last age then divinding it by the length of personAverageAge.
 }
 
 console.log(averageAge(personArr))
+
+// Part 3: Thinking Critically
+
+// It is important to remember that when working with objects in JavaScript,
+//  we can either pass those objects into functions by value or by reference. 
+// This important distinction changes the way that functions behave, and can have large
+//  impacts on the way a program executes.
+// For this section, develop functions that accomplish the following:
+// Take an object and increment its age field.
+// Take an object, make a copy, and increment the age field of the copy.
+//  Return the copy.
+// For each of the functions above, if the object does not yet contain an age field, 
+// create one and set it to 0. Also, add (or modify, as appropriate) an updated_at field 
+// that stores a Date object with the current time.
+// Thought experiment: since the Date object is an object, what would happen if
+//  we modified it in the copy of the object created in the second function using 
+// setTime() or another method? How could we circumvent potentially undesired behavior?
+
+let newObj = {
+    name: "Jose",
+    age: 31
+}
+
+function incrementAge(obj) {
+    return obj.age += 1
+}
+
+console.log(incrementAge(newObj))
+
+let missingAgeObj = {
+    name: "John"
+}
+
+function addAge(person) {
+    if (!person.age) {
+        person.age = 0;
+    }
+
+        person.age += 1;
+        person.updated_at = new Date(); // Update timestamp
+    
+    return;
+}
+addAge(missingAgeObj)
+
+console.log(missingAgeObj)
+
+let dog = {
+    name: "Franky",
+    breed: "Dachshund"
+}
+
+function copyAndAddAge(doggy) {
+    let newDoggy = {
+        ...doggy, // spreading the original 
+        age: (doggy.age || 0) + 1, // checking if age exists if not makes age automatically 0 and then we increment by 1
+        updated_at: new Date(doggy.updated_at ? doggy.updated_at.getTime() : Date.now()) 
+    }
+    return newDoggy;
+}
+
+console.log(copyAndAddAge(dog))
+
