@@ -102,10 +102,10 @@ let personArr = [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" }, {
 //learning how to use map real quck
 
 //using map to find the ages and converting them to numbers
-let ages = personArr.map(person => Number(person.age))
-console.log(ages)
-let names = personArr.map(person => (person.name))
-console.log(names)
+// let ages = personArr.map(person => Number(person.age))
+// console.log(ages)
+// let names = personArr.map(person => (person.name))
+// console.log(names)
 
 
 // Sort the array by age.
@@ -116,3 +116,104 @@ function sortByAge(byAge) {
 }
 
 console.log(sortByAge(personArr))
+
+// Filter the array to remove entries with an age greater than 50.
+
+function removingOlderPeople(ageistWowOk) {
+
+    return ageistWowOk.filter(person => Number(person.age) < 50) // converting the number string to an int to filter out any numbers 50 and above and returning those numbers under 50
+
+}
+console.log(removingOlderPeople(personArr))
+
+//Map the array to change the “occupation” key to “job” and increment every age by 1.
+
+function newKeyAndIncrement(change) {
+
+    return change.map(person => {
+        let { occupation, ...rest } = person // removes occupation 
+        return {
+            ...rest, // spreads all else 
+            job: person.occupation, // changing the name of occupation to job
+            age: Number(person.age) + 1 // incrementing the age by 1
+        }
+    })
+}
+
+//Rest in Objects
+
+// { keyToRemove, ...rest } = obj Extracts keyToRemove, keeps everything else in rest
+
+console.log(newKeyAndIncrement(personArr))
+
+//Use the reduce method to calculate the sum of the ages. Then use the result to calculate the average age.
+
+function averageAge(personAverageAge) {
+
+    return personAverageAge.reduce((sum, person) => sum + Number(person.age), 0) / personAverageAge.length; // starting at 0 and adding the value of Number(person.age) till we reach the last age then divinding it by the length of personAverageAge.
+}
+
+console.log(averageAge(personArr))
+
+// Part 3: Thinking Critically
+
+// It is important to remember that when working with objects in JavaScript,
+//  we can either pass those objects into functions by value or by reference. 
+// This important distinction changes the way that functions behave, and can have large
+//  impacts on the way a program executes.
+// For this section, develop functions that accomplish the following:
+// Take an object and increment its age field.
+// Take an object, make a copy, and increment the age field of the copy.
+//  Return the copy.
+// For each of the functions above, if the object does not yet contain an age field, 
+// create one and set it to 0. Also, add (or modify, as appropriate) an updated_at field 
+// that stores a Date object with the current time.
+// Thought experiment: since the Date object is an object, what would happen if
+//  we modified it in the copy of the object created in the second function using 
+// setTime() or another method? How could we circumvent potentially undesired behavior?
+
+let newObj = {
+    name: "Jose",
+    age: 31
+}
+
+function incrementAge(obj) {
+    return obj.age += 1
+}
+
+console.log(incrementAge(newObj))
+
+let missingAgeObj = {
+    name: "John"
+}
+
+function addAge(person) {
+    if (!person.age) {
+        person.age = 0;
+    }
+
+        person.age += 1;
+        person.updated_at = new Date(); // Update timestamp
+    
+    return;
+}
+addAge(missingAgeObj)
+
+console.log(missingAgeObj)
+
+let dog = {
+    name: "Franky",
+    breed: "Dachshund"
+}
+
+function copyAndAddAge(doggy) {
+    let newDoggy = {
+        ...doggy, // spreading the original 
+        age: (doggy.age || 0) + 1, // checking if age exists if not makes age automatically 0 and then we increment by 1
+        updated_at: new Date(doggy.updated_at ? doggy.updated_at.getTime() : Date.now()) 
+    }
+    return newDoggy;
+}
+
+console.log(copyAndAddAge(dog))
+
